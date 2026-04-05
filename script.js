@@ -129,39 +129,123 @@ const engines = {
 
 const coreCards=[['Subject / 主體','誰在說、誰在部署、誰獲益。','Who states, deploys, and benefits.','先抓主體，再談責任。'],['Cause / 因果','輸出如何穿透到現實後果。','How output crosses into real consequence.','看路徑，不看口號。'],['Boundary / 邊界','有無明確邊界與升級機制。','Whether boundary and escalation are explicit.','沒邊界就沒閉環。'],['Cost / 成本','可見、隱藏、延後成本是否同時計。','Whether visible/hidden/deferred layers are booked together.','只算前段會失真。'],['Responsibility / 責任','誰扛第一責任，誰扛次級。','Who carries primary and secondary tiers.','責任要分層。'],['Consequence / 後果','誰承接後果，如何可追溯。','Who owns consequence and traceability.','有後果就要有人扛。'],['Replayable Accountability / 可回放責任','可回放、可審計、可追責。','Replayable, auditable, accountable.','可回放才可追責。'],['Verdict / 裁決','輸出可審計責任判決。','Output an auditable accountability verdict.','不是情緒，是結構裁決。']];
 
-const el=id=>document.getElementById(id); const list=(id,arr)=>el(id).innerHTML=arr.map(v=>`<li>${v}</li>`).join('');
+const el=id=>document.getElementById(id);
+const safeObj=v=>(v&&typeof v==='object'?v:{});
+const safeArr=(v,f=[])=>Array.isArray(v)?v:f;
+const safeText=v=>typeof v==='string'&&v.trim()?v:'—';
+const setText=(id,val)=>{const n=el(id); if(n) n.textContent=safeText(val);};
+const setHtml=(id,val)=>{const n=el(id); if(n) n.innerHTML=val || '';};
+const list=(id,arr)=>setHtml(id, safeArr(arr).map(v=>`<li>${v}</li>`).join(''));
+
 function render(){
-  const t=common[app.lang], e=engines[app.engine];
-  document.body.classList.toggle('engine-b',app.engine==='B'); document.documentElement.lang=app.lang==='zh'?'zh-Hant':'en';
-  el('langToggle').textContent=app.lang==='zh'?'EN':'中文'; el('officialBtnTop').textContent=app.lang==='zh'?'回到官網':'Official Website';
-  el('heroTitle').textContent=app.lang==='zh'?e.name.zh:e.name.en; el('heroSubtitle').textContent=app.lang==='zh'?e.sub.zh:e.sub.en;
-  [el('btnToCase').textContent,el('btnToFormula').textContent,el('openDescriptionModal').textContent,el('openModelModal').textContent]=t.heroBtns;
-  el('statusTitle').textContent=t.status; el('statusEngineLabel').textContent=t.engine; el('statusRiskLabel').textContent=`${t.risk}：`; el('statusBoundaryLabel').textContent=t.boundary; el('statusClosureLabel').textContent=t.closure;
-  el('statusEngine').textContent=app.lang==='zh'?e.name.zh:e.name.en; el('statusRisk').textContent=e.risk; el('statusBoundary').textContent=e.boundary; el('statusClosure').textContent=app.lang==='zh'?e.closure.zh:e.closure.en;
-  el('intensityLabel').textContent=t.intensity; el('intensityValue').textContent=e.intensity;
-  el('whatIsTitle').textContent=t.whatIsTitle; el('whatNotTitle').textContent=t.whatNotTitle; list('whatIsList',t.whatIs); list('whatNotList',t.whatNot); el('fixedNotice').textContent=t.notice;
-  el('engineSwitcherTitle').textContent=t.labels.switcher; el('engineA').textContent=app.lang==='zh'?'法律責任判決引擎':'Legal Responsibility Verdict Engine'; el('engineB').textContent=app.lang==='zh'?'責任敘事成本審計引擎':'Responsibility Narrative Cost Audit Engine';
-  el('engineA').classList.toggle('active',app.engine==='A'); el('engineB').classList.toggle('active',app.engine==='B');
-  el('coreStructureTitle').textContent=t.labels.core; el('coreCards').innerHTML=coreCards.map(c=>`<article class="card"><h3>${c[0]}</h3><p>${c[1]}</p><p>${c[2]}</p><p class="mini">${c[3]}</p></article>`).join('');
-  el('basicFormulaTitle').textContent=t.labels.formula; el('formulaList').innerHTML=e.formula.map(f=>`<section><h3>${f[0]}</h3><p>${f[1]}</p><p class="mini">${f[2]}</p></section>`).join('');
-  const ov=e.overview[app.lang]; el('caseOverviewTitle').textContent=t.labels.case;
-  el('caseOverviewContent').innerHTML=`<section><h3>Case Summary</h3><p>${ov.summary}</p></section><section><h3>Scenario</h3><p>${ov.scenario}</p></section><section><h3>Statement Layer</h3><ul>${ov.statements.map(v=>`<li>${v}</li>`).join('')}</ul></section><section><h3>Narrative Escape Detection / 逃責話術識別</h3><ul>${ov.escapes.map(v=>`<li>${v}</li>`).join('')}</ul></section>`;
-  el('rolesBlock').innerHTML=e.roles?`<h3>Legal Exposure Mapping Roles</h3><div class="table"><table><thead><tr><th>Role</th><th>Typical Statement</th><th>Tier</th></tr></thead><tbody>${e.roles.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('')}</tbody></table></div>`:'';
-  const d=e.deep[app.lang];
-  const ladder=d.ladder.map(l=>`<div class="loss-card"><h4>${l[0]}</h4><p>${l[1]}</p><p>${l[2]}</p><p class="mini">${l[3]}</p></div>`).join('');
-  const damages=d.damageCards?`<div class="loss-grid">${d.damageCards.map(x=>`<div class="loss-card"><h4>${x[0]}</h4><p>${x[1]}</p></div>`).join('')}</div><p class="mini">${d.damageNote}</p>`:`<div class="band-grid">${d.bands.map(b=>`<div class="loss-card"><h4>${b[0]} Band</h4><ul>${b.slice(1).map(v=>`<li>${v}</li>`).join('')}</ul></div>`).join('')}</div><p class="mini">${d.bandNote}</p>`;
-  const whoPays=`<div class="table"><table><thead><tr><th>Cost Type / 成本類型</th><th>Immediate Payer / 立即付款者</th><th>Deferred Payer / 延後付款者</th><th>Hidden Carrier / 隱性承擔者</th></tr></thead><tbody>${d.whoPays.map(r=>`<tr>${r.map(v=>`<td>${v}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
-  el('fullVerdictTitle').textContent=t.labels.verdict;
-  el('verdictDeepSections').innerHTML=`<section><h3>A. Verdict Explanation / 判決解釋</h3><p>${d.verdictExp}</p></section><section><h3>B. Responsibility Ladder / 責任階梯</h3><div class="loss-grid">${ladder}</div></section><section><h3>C. Legal Exposure Mapping / 法律責任映射</h3><ul>${d.legalExposure.map(v=>`<li>${v}</li>`).join('')}</ul></section><section><h3>D. Failure Chain / 失效鏈</h3><p>${d.failure}</p></section><section><h3>E. Damage & Loss Projection / 損失與代價投影</h3>${damages}</section><section><h3>F. Future Consequence / 未來後果</h3><p>${d.future}</p></section><section><h3>G. Who Pays / 誰付錢</h3>${whoPays}</section><section><h3>H. Final Judgment Statement / 最終裁決聲明</h3><p>${d.final}</p></section>`;
-  const [sb1,sb2,sb3]=t.speech; el('speakSummary').textContent=sb1; el('speakFull').textContent=sb2; el('stopSpeak').textContent=sb3; el('speechStatus').textContent=('speechSynthesis' in window)?t.speechReady:t.speechUnsupported;
-  el('apiTitle').textContent=t.labels.api; el('apiRequest').textContent=JSON.stringify(e.apiReq,null,2); el('apiResponse').textContent=JSON.stringify(e.apiRes,null,2); el('apiFootnote').textContent=t.apiFoot;
-  el('closingLine').textContent=t.closing; el('descriptionModalTitle').textContent=t.descTitle; list('descriptionModalList',t.descList); el('mapTitle').textContent=t.mapTitle; list('mapList',t.mapList); el('descriptionSelf').textContent=t.descSelf;
-  el('modelModalTitle').textContent=app.lang==='zh'?'Model Verdict Explanation / 模型裁決解釋':'Model Verdict Explanation';
-  el('modelModalSections').innerHTML=e.modal[app.lang].map(s=>`<section><h4>${s[0]}</h4><p>${s[1]}</p></section>`).join('');
+  const t=safeObj(common[app.lang]);
+  const e=safeObj(engines[app.engine]);
+  const labels=safeObj(t.labels);
+  const ov=safeObj(safeObj(e.overview)[app.lang]);
+  const deep=safeObj(safeObj(e.deep)[app.lang]);
+  const close=safeObj(e.closure);
+
+  document.body.classList.toggle('engine-b', app.engine==='B');
+  document.documentElement.lang=app.lang==='zh'?'zh-Hant':'en';
+
+  setText('langToggle', app.lang==='zh'?'EN':'中文');
+  setText('officialBtnTop', app.lang==='zh'?'回到官網':'Official Website');
+  setText('heroTitle', safeObj(e.name)[app.lang]||safeObj(e.name).zh||safeObj(e.name).en);
+  setText('heroSubtitle', safeObj(e.sub)[app.lang]||safeObj(e.sub).zh||safeObj(e.sub).en);
+
+  const heroBtns=safeArr(t.heroBtns,['查看案例區','查看公式','開啟說明','開啟解釋']);
+  setText('btnToCase', heroBtns[0]); setText('btnToFormula', heroBtns[1]); setText('openDescriptionModal', heroBtns[2]); setText('openModelModal', heroBtns[3]);
+
+  setText('statusTitle', t.status||'Engine Status');
+  setText('statusEngineLabel', t.engine||'Engine:');
+  setText('statusRiskLabel', `${t.risk||'Risk'}：`);
+  setText('statusBoundaryLabel', t.boundary||'Boundary:');
+  setText('statusClosureLabel', t.closure||'Closure:');
+  setText('statusEngine', safeObj(e.name)[app.lang]||safeObj(e.name).zh||safeObj(e.name).en);
+  setText('statusRisk', e.risk||'N/A');
+  setText('statusBoundary', e.boundary||'Boundary closure failed');
+  setText('statusClosure', close[app.lang]||close.zh||close.en||'Unclosed');
+  setText('intensityLabel', t.intensity||'Verdict Intensity:');
+  setText('intensityValue', e.intensity||'N/A');
+
+  setText('whatIsTitle', t.whatIsTitle||'What This Is'); setText('whatNotTitle', t.whatNotTitle||'What This Is Not');
+  list('whatIsList', t.whatIs||[]); list('whatNotList', t.whatNot||[]); setText('fixedNotice', t.notice||'Description-layer demo only.');
+
+  setText('engineSwitcherTitle', labels.switcher||'Engine Switcher');
+  setText('engineA', app.lang==='zh'?'法律責任判決引擎':'Legal Responsibility Verdict Engine');
+  setText('engineB', app.lang==='zh'?'責任敘事成本審計引擎':'Responsibility Narrative Cost Audit Engine');
+  const aBtn=el('engineA'), bBtn=el('engineB'); if(aBtn) aBtn.classList.toggle('active',app.engine==='A'); if(bBtn) bBtn.classList.toggle('active',app.engine==='B');
+
+  setText('coreStructureTitle', labels.core||'Core Structure');
+  setHtml('coreCards', safeArr(coreCards).map(c=>`<article class="card"><h3>${safeText(c[0])}</h3><p>${safeText(c[1])}</p><p>${safeText(c[2])}</p><p class="mini">${safeText(c[3])}</p></article>`).join(''));
+
+  setText('basicFormulaTitle', labels.formula||'Basic Formula');
+  setHtml('formulaList', safeArr(e.formula).map(f=>`<section><h3>${safeText(f[0])}</h3><p>${safeText(f[1])}</p><p class="mini">${safeText(f[2])}</p></section>`).join('') || '<section><h3>Formula</h3><p>Data unavailable.</p></section>');
+
+  setText('caseOverviewTitle', labels.case||'Case Overview');
+  const statements=safeArr(ov.statements), escapes=safeArr(ov.escapes);
+  setHtml('caseOverviewContent', `<section><h3>Case Summary</h3><p>${safeText(ov.summary)}</p></section><section><h3>Scenario</h3><p>${safeText(ov.scenario)}</p></section><section><h3>Statement Layer</h3><ul>${(statements.length?statements:['No statement data']).map(v=>`<li>${v}</li>`).join('')}</ul></section><section><h3>Narrative Escape Detection / 逃責話術識別</h3><ul>${(escapes.length?escapes:['No escape mapping data']).map(v=>`<li>${v}</li>`).join('')}</ul></section>`);
+
+  const roles=safeArr(e.roles);
+  setHtml('rolesBlock', roles.length?`<h3>Legal Exposure Mapping Roles</h3><div class="table"><table><thead><tr><th>Role</th><th>Typical Statement</th><th>Tier</th></tr></thead><tbody>${roles.map(r=>`<tr><td>${safeText(r[0])}</td><td>${safeText(r[1])}</td><td>${safeText(r[2])}</td></tr>`).join('')}</tbody></table></div>`:'');
+
+  setText('fullVerdictTitle', labels.verdict||'Full Verdict / Full Audit');
+  const ladderHtml=safeArr(deep.ladder).map(l=>`<div class="loss-card"><h4>${safeText(l[0])}</h4><p>${safeText(l[1])}</p><p>${safeText(l[2])}</p><p class="mini">${safeText(l[3])}</p></div>`).join('') || '<div class="loss-card"><h4>Ladder</h4><p>Data unavailable.</p></div>';
+  const hasDamageCards=safeArr(deep.damageCards).length>0;
+  const damages=hasDamageCards
+    ? `<div class="loss-grid">${safeArr(deep.damageCards).map(x=>`<div class="loss-card"><h4>${safeText(x[0])}</h4><p>${safeText(x[1])}</p></div>`).join('')}</div><p class="mini">${safeText(deep.damageNote)}</p>`
+    : `<div class="band-grid">${safeArr(deep.bands,[['Low','N/A']]).map(b=>`<div class="loss-card"><h4>${safeText(b[0])} Band</h4><ul>${safeArr(b.slice(1),['N/A']).map(v=>`<li>${v}</li>`).join('')}</ul></div>`).join('')}</div><p class="mini">${safeText(deep.bandNote)}</p>`;
+  const whoPaysRows=safeArr(deep.whoPays).length?safeArr(deep.whoPays):[['N/A','N/A','N/A','N/A']];
+  const whoPays=`<div class="table"><table><thead><tr><th>Cost Type / 成本類型</th><th>Immediate Payer / 立即付款者</th><th>Deferred Payer / 延後付款者</th><th>Hidden Carrier / 隱性承擔者</th></tr></thead><tbody>${whoPaysRows.map(r=>`<tr><td>${safeText(r[0])}</td><td>${safeText(r[1])}</td><td>${safeText(r[2])}</td><td>${safeText(r[3])}</td></tr>`).join('')}</tbody></table></div>`;
+  setHtml('verdictDeepSections', `<section><h3>A. Verdict Explanation / 判決解釋</h3><p>${safeText(deep.verdictExp)}</p></section><section><h3>B. Responsibility Ladder / 責任階梯</h3><div class="loss-grid">${ladderHtml}</div></section><section><h3>C. Legal Exposure Mapping / 法律責任映射</h3><ul>${(safeArr(deep.legalExposure).length?safeArr(deep.legalExposure):['Data unavailable']).map(v=>`<li>${v}</li>`).join('')}</ul></section><section><h3>D. Failure Chain / 失效鏈</h3><p>${safeText(deep.failure)}</p></section><section><h3>E. Damage & Loss Projection / 損失與代價投影</h3>${damages}</section><section><h3>F. Future Consequence / 未來後果</h3><p>${safeText(deep.future)}</p></section><section><h3>G. Who Pays / 誰付錢</h3>${whoPays}</section><section><h3>H. Final Judgment Statement / 最終裁決聲明</h3><p>${safeText(deep.final)}</p></section>`);
+
+  const speech=safeArr(t.speech,['Read Summary','Read Full Verdict','Stop']);
+  setText('speakSummary',speech[0]); setText('speakFull',speech[1]); setText('stopSpeak',speech[2]);
+  setText('speechStatus',('speechSynthesis' in window)?(t.speechReady||'Speech ready'):(t.speechUnsupported||'Speech unsupported'));
+
+  setText('apiTitle',labels.api||'API Preview');
+  setText('apiFootnote',t.apiFoot||'Demo only');
+  setText('closingLine',t.closing||'Not all efficiency is progress.');
+  setText('descriptionModalTitle',t.descTitle||'Description Layer Notice');
+  list('descriptionModalList',t.descList||[]); setText('mapTitle',t.mapTitle||'How framework maps responsibility'); list('mapList',t.mapList||[]); setText('descriptionSelf',t.descSelf||'Description-layer engine.');
+  setText('modelModalTitle',app.lang==='zh'?'Model Verdict Explanation / 模型裁決解釋':'Model Verdict Explanation');
+  setHtml('modelModalSections', safeArr(safeObj(e.modal)[app.lang]).map(s=>`<section><h4>${safeText(s[0])}</h4><p>${safeText(s[1])}</p></section>`).join('') || '<section><h4>Model Verdict Explanation</h4><p>Data unavailable.</p></section>');
+
+  const req=safeObj(e.apiReq), res=safeObj(e.apiRes);
+  setText('apiRequest', JSON.stringify(Object.keys(req).length?req:{engine:'demo',mode:'fallback'},null,2));
+  setText('apiResponse', JSON.stringify(Object.keys(res).length?res:{status:'fallback'},null,2));
 }
-function speak(text){if(!('speechSynthesis' in window))return; speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text); u.lang=app.lang==='zh'?'zh-TW':'en-US'; speechSynthesis.speak(u);} 
-el('langToggle').onclick=()=>{app.lang=app.lang==='zh'?'en':'zh';render();}; el('engineA').onclick=()=>{app.engine='A';render();}; el('engineB').onclick=()=>{app.engine='B';render();};
-el('openDescriptionModal').onclick=()=>el('descriptionModal').classList.remove('hidden'); el('openModelModal').onclick=()=>el('modelModal').classList.remove('hidden');
-document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>el(b.dataset.close).classList.add('hidden')); window.onclick=(ev)=>{if(ev.target.classList&&ev.target.classList.contains('modal'))ev.target.classList.add('hidden');};
-el('speakSummary').onclick=()=>speak(engines[app.engine].summary[app.lang]); el('speakFull').onclick=()=>speak(engines[app.engine].deep[app.lang].final); el('stopSpeak').onclick=()=>('speechSynthesis' in window)&&speechSynthesis.cancel();
-render();
+
+function safeRender(){
+  try{ render(); }
+  catch(err){
+    console.error('render failed', err);
+    setText('heroTitle','Render fallback');
+    setText('heroSubtitle','Data fallback mode');
+    setHtml('verdictDeepSections','<section><h3>Render Fallback</h3><p>Some data failed to load, but the page remains usable.</p></section>');
+  }
+}
+
+function speak(text){
+  if(!('speechSynthesis' in window)) return;
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text || '');
+  u.lang=app.lang==='zh'?'zh-TW':'en-US';
+  speechSynthesis.speak(u);
+}
+
+const bind = (id, handler)=>{ const n=el(id); if(n) n.addEventListener('click', handler); };
+
+bind('langToggle', ()=>{ app.lang=app.lang==='zh'?'en':'zh'; safeRender(); });
+bind('engineA', ()=>{ app.engine='A'; safeRender(); });
+bind('engineB', ()=>{ app.engine='B'; safeRender(); });
+bind('openDescriptionModal', ()=> el('descriptionModal')?.classList.remove('hidden'));
+bind('openModelModal', ()=> el('modelModal')?.classList.remove('hidden'));
+bind('speakSummary', ()=> speak((safeObj(engines[app.engine]).summary||{})[app.lang] || ''));
+bind('speakFull', ()=> speak((safeObj(safeObj(engines[app.engine]).deep)[app.lang]||{}).final || ''));
+bind('stopSpeak', ()=>{ if('speechSynthesis' in window) speechSynthesis.cancel(); });
+
+document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=> el(b.dataset.close)?.classList.add('hidden')));
+window.addEventListener('click',(ev)=>{ if(ev.target && ev.target.classList && ev.target.classList.contains('modal')) ev.target.classList.add('hidden'); });
+
+safeRender();
