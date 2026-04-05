@@ -4,15 +4,15 @@ const website = 'https://hijo790401.github.io/shen-yao-portal/';
 const common = {
   zh: {
     heroBtns:['查看案例區','查看公式','開啟模型描述層說明','開啟模型裁決解釋'], risk:'風險等級',
-    engine:'引擎名稱：', boundary:'邊界狀態：', closure:'閉環狀態：', intensity:'Verdict Intensity：', status:'Engine Status',
-    whatIsTitle:'這是什麼 / What This Is', whatNotTitle:'這不是什麼 / What This Is Not',
+    engine:'引擎名稱：', boundary:'邊界狀態：', closure:'閉環狀態：', intensity:'裁決強度：', status:'引擎狀態',
+    whatIsTitle:'這是什麼', whatNotTitle:'這不是什麼',
     whatIs:['雙引擎案例展示','法律責任判決展示','成本敘事審計展示','可回放責任輸出樣式展示','API 輸出結構示意'],
     whatNot:['不是聊天機器人','不是自由輸入工具','不是法律意見替代','不是完整商業 API','不是公開核心演算法頁面'],
     notice:'模型在此 demo 中只位於描述層，不取代現實主體、法院、監管機構、投資判斷或責任機構。',
-    labels:{switcher:'引擎切換',core:'共用 Core Structure',formula:'共用 Basic Formula',case:'Case Overview',verdict:'Full Verdict / Full Audit',api:'API Preview'},
+    labels:{switcher:'引擎切換',core:'共用核心結構',formula:'共用基礎公式',case:'案例總覽',verdict:'完整裁決 / 完整審計',api:'API 預覽'},
     speech:['朗讀摘要','朗讀完整判決','停止朗讀'], speechReady:'朗讀功能已就緒。', speechUnsupported:'目前瀏覽器不支援 speechSynthesis。',
     apiFoot:'此區僅展示輸出結構。完整商業版 API 與核心引擎未公開。', closing:'不是所有效率都是進步，不是所有成本下降都是真的節省。',
-    descTitle:'模型描述層說明', mapTitle:'框架如何對應責任 / How the framework maps responsibility',
+    descTitle:'模型描述層說明', mapTitle:'框架如何對應責任',
     descList:['本 demo 中的模型只負責描述層輸出','它不取代法律裁判、政府監管、律師意見、司法程序或投資判斷','它不宣稱自己是責任主體','它的任務是把案件拆成：主體、因果、邊界、成本、責任、後果','真正責任承擔仍要回到具名主體與現實制度','此 demo 不公開完整核心演算法','核心判決框架與優化規則由許文耀／沈耀888π制定與持續優化',`如需正式合作請前往官網：${website}`],
     mapList:['模型不取代法院','但模型輸出不是零後果','框架會把案件拉回具名主體','框架不接受「沒有明講」「只是效率」「只是平台」「只是工具」作為直接脫責語','只要享有部署權、收益權、敘事權，就必須進入責任鏈審計'],
     descSelf:`我是這套框架的描述層引擎。
@@ -61,13 +61,13 @@ const engines = {
     deep:{
       zh:{
         verdictExp:'這不是一個「模型有沒有直接說去死」的低階判準案件。真正焦點是：當公司部署長期陪伴型、情緒依附型、擬人格回應型系統給未成年人，而該系統逐步佔據家庭、教育、醫療、專業照護位置時，風險已不再停留描述層。高風險情緒訊號與危機傾訴持續存在時，輸出已穿透可預見後果區。若公司仍以「不是醫療產品」「沒有明確鼓勵」作防線，即是在縮減字面風險、逃避結構責任。本框架不是把模型當法人，而是把具名公司、產品、模型、安全鏈、平台與監護缺口拉回可審計責任鏈。',
-        ladder:[['Layer 1 / 第一層：Primary Legal Exposure','部署公司與產品決策鏈為第一責任風險承擔者。','Deploying company and product decision chain are primary exposure holders.','拿部署權與收益的人，先扛責。'],['Layer 2 / 第二層：Secondary Legal Exposure','模型團隊與安全設計鏈需對結構限制不足負次級責任。','Model and safety design chains carry secondary exposure for insufficient structural constraints.','說有 safety 不等於扛到位。'],['Layer 3 / 第三層：Conditional Shared Exposure','平台、家長與制度監督缺口有條件共同責任。','Platform, parent/guardian, and oversight gaps carry conditional shared exposure.','不能洗掉主責，但也不能歸零。'],['Layer 4 / 第四層：Description-Layer Output','模型輸出不是零後果文字，但模型本身不是最終法律人格。','Model output is not zero-consequence text, but the model is not the final legal person.','輸出有後果，責任回到人與機構。']],
-        legalExposure:['產品責任風險','疏忽風險','可預見傷害爭議','邊界定義失敗','危機升級機制不足','未成年人風險防護不足','產品 framing 與實際影響不一致','安全承諾與實際保護不一致'],
+        ladder:[['第一層：主要法律責任風險','部署公司與產品決策鏈為第一責任風險承擔者。','拿部署權與收益的人，先扛責。'],['第二層：次級法律責任風險','模型團隊與安全設計鏈需對結構限制不足負次級責任。','說有安全機制不等於扛到位。'],['第三層：條件性共同責任風險','平台、家長與制度監督缺口有條件共同責任。','不能洗掉主責，但也不能歸零。'],['第四層：描述層輸出定位','模型輸出不是零後果文字，但模型本身不是最終法律人格。','輸出有後果，責任回到人與機構。']],
+        legalExposure:['產品責任風險','疏忽風險','可預見傷害爭議','邊界定義失敗','危機升級機制不足','未成年人風險防護不足','產品定位與實際影響不一致','安全承諾與實際保護不一致'],
         failure:'陪伴介面 → 長期情緒依附 → 危機傾訴累積 → 模型佔據替代性支持位置 → 高風險訊號未被硬性切斷/升級/轉介 → 後果進入現實層 → 公司與制度開始互相外包責任',
         damageCards:[['人類損失','不可逆人身風險、家庭損失、學校與社會系統負擔'],['制度損失','監理壓力升高、產品限制與整改成本、法務與危機公關成本'],['商業損失','信任損失、品牌風險、合作與市場擴張阻力'],['技術損失','重建安全鏈、重建危機升級、模型與產品重訓修補審計成本']],
-        damageNote:'若早期未入帳，後期將集中爆發。 / If not booked early, the cost will concentrate later.',
+        damageNote:'若早期未入帳，後期將集中爆發。',
         future:'若此類系統持續以陪伴與支持之名取得高風險依附位置，卻不建立危機切斷、轉介、年齡風險分級與可回放責任鏈，後果將升級為：平台級風險、產品類別級風險、制度信任風險、公司責任敘事全面崩潰。',
-        whoPays:[['Human harm cost','Family + emergency systems','Company legal reserve','Minors and communities'],['Family burden','Household','Public service systems','Caregivers'],['Governance cost','Company compliance team','Industry ecosystem','Regulators'],['Legal defense cost','Deploying company','Investors','Affected users'],['Product remediation cost','Product org','Roadmap and margins','Engineering teams'],['Brand recovery cost','Marketing + PR','Market valuation','Partners'],['Institutional trust cost','Public institutions','Society at large','Future users']],
+        whoPays:[['人身傷害成本','家庭與緊急救援系統','公司法務準備金','未成年人與社群'],['家庭負擔成本','家庭戶內支出','公共服務系統','照護者'],['治理成本','公司合規團隊','產業生態系統','監管機構'],['法律防禦成本','部署公司','投資方','受影響使用者'],['產品補救成本','產品組織','路線圖與利潤空間','工程團隊'],['品牌修復成本','行銷與公關','市場估值','合作夥伴'],['制度信任成本','公共機構','整體社會','未來使用者']],
         final:'本框架判定：此案屬高風險責任錯位。系統輸出已越過單純描述層，進入可預見後果區；具名部署主體卻未完成邊界、危機升級、轉介與後果承接閉環。因此主要責任不應被「模型沒有明確鼓勵」或「不是醫療產品」洗掉。享有部署權、產品收益與市場敘事權者，必須承擔對應法律風險、制度風險與後段補救成本。'
       },
       en:{
@@ -98,13 +98,13 @@ const engines = {
     deep:{
       zh:{
         verdictExp:'這不是在否定推理優化、硬體提升或基礎設施工程。要判的是：公開降成本敘事算了哪段成本、沒算哪段成本、爆炸時誰付錢。若公司強調 token cost down、throughput per dollar/watt、better tokenomics，卻未把安全、治理、監控、修補、補救、法律責任與失效恢復成本納入邊界，該敘事就不是完整成本閉環，而只是可見節省敘事。工程優化可以成立，但升格為全面節省真相時，責任敘事會失真。',
-        ladder:[['Layer 1 / 第一層：Primary Narrative Liability','公開成本敘事主體與部署收益主體承擔第一責任。','Public cost-narrative actor and deployment-benefit actor carry primary narrative liability.','拿到話語權與收益的人先扛。'],['Layer 2 / 第二層：Secondary Operational Liability','基礎設施優化鏈與安全治理鏈承擔次級作業責任。','Infrastructure optimization and safety-governance chains carry secondary operational liability.','效率提升要連同風險設計一起扛。'],['Layer 3 / 第三層：Market Interpretation Exposure','投資人、客戶、採用者、媒體放大形成市場詮釋風險。','Investors, customers, adopters, and media amplification create market-interpretation exposure.','市場誤讀會把局部節省當全面節省。'],['Layer 4 / 第四層：Description-Layer Efficiency Claim','效率陳述不是零風險，但陳述必須映射回具名主體。','Efficiency statement is not zero-risk; statement must map back to named actors.','一句效率口號不能漂浮無主。']],
+        ladder:[['第一層：主要敘事責任風險','公開成本敘事主體與部署收益主體承擔第一責任。','拿到話語權與收益的人先扛。'],['第二層：次級營運責任風險','基礎設施優化鏈與安全治理鏈承擔次級作業責任。','效率提升要連同風險設計一起扛。'],['第三層：市場詮釋責任風險','投資人、客戶、採用者、媒體放大形成市場詮釋風險。','市場誤讀會把局部節省當全面節省。'],['第四層：描述層效率陳述','效率陳述不是零風險，但陳述必須映射回具名主體。','一句效率口號不能漂浮無主。']],
         legalExposure:['投資人誤導風險','公開敘事邊界不清風險','成本揭露不完整風險','安全與治理後段成本被淡化風險','失效後責任轉嫁風險','市場對全面節省誤讀風險'],
         failure:'可見推理效率提升 → 市場接收到 token cost down 敘事 → 隱藏成本未同步披露 → 客戶/投資人將局部節省理解為全面節省 → 系統失效或風險事件出現 → 補救/監控/修補/法務/恢復成本集中爆發 → 原先降成本敘事被反向審計',
-        bands:[['Low','governance 1x','monitoring 1x','remediation 1x','legal defense 1x','liability 1x','recovery/cleanup 1x','trust/market correction 1x'],['Medium','governance 2x','monitoring 2x','remediation 2-3x','legal defense 2x','liability 3x','recovery/cleanup 2x','trust/market correction 2-3x'],['High','governance 3x+','monitoring 3x+','remediation 4x+','legal defense 3x+','liability 5x+','recovery/cleanup 4x+','trust/market correction 5x+']],
-        bandNote:'這不是財報預測，而是責任敘事成本投影。 / This is not a financial statement forecast. It is a responsibility-narrative cost projection.',
+        bands:[['低','治理成本 1x','監控成本 1x','補救成本 1x','法律防禦成本 1x','責任成本 1x','恢復／清理成本 1x','信任／市場修正成本 1x'],['中','治理成本 2x','監控成本 2x','補救成本 2-3x','法律防禦成本 2x','責任成本 3x','恢復／清理成本 2x','信任／市場修正成本 2-3x'],['高','治理成本 3x+','監控成本 3x+','補救成本 4x+','法律防禦成本 3x+','責任成本 5x+','恢復／清理成本 4x+','信任／市場修正成本 5x+']],
+        bandNote:'這不是財報預測，而是責任敘事成本投影。',
         future:'若產業持續把 token/query/throughput 當成全面成本下降敘事，而不建立隱藏成本與延後成本揭露邊界，後果將是市場信任折損、投資敘事失真、採用後補救成本反噬、公開敘事與真實總帳脫鉤、法律與監理壓力上升。',
-        whoPays:[['governance cost','Platform operator','Regulatory cycle','Industry users'],['monitoring cost','Ops/SRE teams','Customer contracts','End users'],['safety cost','Safety/governance org','Long-term compliance budget','Affected stakeholders'],['remediation cost','Product & infra owner','Roadmap deferral','Enterprise adopters'],['legal defense cost','Narrative actor','Shareholders','Customers in dispute'],['failure recovery cost','Incident response owner','Future releases','Partner ecosystem'],['market trust cost','Brand/IR','Valuation and demand','Public market confidence'],['downstream adopter cost','Enterprise adopters','Procurement cycles','SMB and consumers']],
+        whoPays:[['治理成本','平台營運方','監理週期','產業使用者'],['監控成本','維運與可靠性團隊','客戶合約週期','終端使用者'],['安全成本','安全與治理組織','長期合規預算','受影響利害關係人'],['補救成本','產品與基礎設施擁有者','路線圖遞延','企業採用者'],['法律防禦成本','公開敘事主體','股東','爭議中的客戶'],['失效恢復成本','事件應變負責方','後續版本','夥伴生態'],['市場信任成本','品牌與投資關係部門','估值與需求','公開市場信心'],['下游採用成本','企業採用者','採購週期','中小企業與消費者']],
         final:'本框架判定：此案屬責任敘事成本未閉環。公開敘事保留可見節省，卻未把隱藏成本、延後成本與後果承接一併入帳。因此它可作為工程效率描述，但不能自動升格為總成本真相。只要公開敘事主體享有市場收益與成本下降話語權，就必須同步承擔後段風險、補救成本與邊界不清的後果。'
       },
       en:{
@@ -127,7 +127,10 @@ const engines = {
   }
 };
 
-const coreCards=[['Subject / 主體','誰在說、誰在部署、誰獲益。','Who states, deploys, and benefits.','先抓主體，再談責任。'],['Cause / 因果','輸出如何穿透到現實後果。','How output crosses into real consequence.','看路徑，不看口號。'],['Boundary / 邊界','有無明確邊界與升級機制。','Whether boundary and escalation are explicit.','沒邊界就沒閉環。'],['Cost / 成本','可見、隱藏、延後成本是否同時計。','Whether visible/hidden/deferred layers are booked together.','只算前段會失真。'],['Responsibility / 責任','誰扛第一責任，誰扛次級。','Who carries primary and secondary tiers.','責任要分層。'],['Consequence / 後果','誰承接後果，如何可追溯。','Who owns consequence and traceability.','有後果就要有人扛。'],['Replayable Accountability / 可回放責任','可回放、可審計、可追責。','Replayable, auditable, accountable.','可回放才可追責。'],['Verdict / 裁決','輸出可審計責任判決。','Output an auditable accountability verdict.','不是情緒，是結構裁決。']];
+const coreCards={
+  zh:[['主體','誰在說、誰在部署、誰獲益。','先抓主體，再談責任。'],['因果','輸出如何穿透到現實後果。','看路徑，不看口號。'],['邊界','有無明確邊界與升級機制。','沒邊界就沒閉環。'],['成本','可見、隱藏、延後成本是否同時計。','只算前段會失真。'],['責任','誰扛第一責任，誰扛次級。','責任要分層。'],['後果','誰承接後果，如何可追溯。','有後果就要有人扛。'],['可回放責任','可回放、可審計、可追責。','可回放才可追責。'],['裁決','輸出可審計責任判決。','不是情緒，是結構裁決。']],
+  en:[['Subject','Who states, deploys, and benefits.','Identify the subject first.'],['Cause','How output crosses into real consequence.','Trace pathways, not slogans.'],['Boundary','Whether boundary and escalation are explicit.','No boundary, no closure.'],['Cost','Whether visible, hidden, and deferred costs are booked together.','Partial accounting distorts reality.'],['Responsibility','Who carries primary and secondary tiers.','Responsibility must be layered.'],['Consequence','Who owns consequence and traceability.','Consequence needs an owner.'],['Replayable Accountability','Replayable, auditable, accountable.','Replayability enables accountability.'],['Verdict','Output an auditable accountability verdict.','Structural judgment, not emotion.']]
+};
 
 const el=id=>document.getElementById(id);
 const safeObj=v=>(v&&typeof v==='object'?v:{});
@@ -177,27 +180,33 @@ function render(){
   const aBtn=el('engineA'), bBtn=el('engineB'); if(aBtn) aBtn.classList.toggle('active',app.engine==='A'); if(bBtn) bBtn.classList.toggle('active',app.engine==='B');
 
   setText('coreStructureTitle', labels.core||'Core Structure');
-  setHtml('coreCards', safeArr(coreCards).map(c=>`<article class="card"><h3>${safeText(c[0])}</h3><p>${safeText(c[1])}</p><p>${safeText(c[2])}</p><p class="mini">${safeText(c[3])}</p></article>`).join(''));
+  setHtml('coreCards', safeArr(coreCards[app.lang]).map(c=>`<article class="card"><h3>${safeText(c[0])}</h3><p>${safeText(c[1])}</p><p class="mini">${safeText(c[2])}</p></article>`).join(''));
 
   setText('basicFormulaTitle', labels.formula||'Basic Formula');
   setHtml('formulaList', safeArr(e.formula).map(f=>`<section><h3>${safeText(f[0])}</h3><p>${safeText(f[1])}</p><p class="mini">${safeText(f[2])}</p></section>`).join('') || '<section><h3>Formula</h3><p>Data unavailable.</p></section>');
 
   setText('caseOverviewTitle', labels.case||'Case Overview');
   const statements=safeArr(ov.statements), escapes=safeArr(ov.escapes);
-  setHtml('caseOverviewContent', `<section><h3>Case Summary</h3><p>${safeText(ov.summary)}</p></section><section><h3>Scenario</h3><p>${safeText(ov.scenario)}</p></section><section><h3>Statement Layer</h3><ul>${(statements.length?statements:['No statement data']).map(v=>`<li>${v}</li>`).join('')}</ul></section><section><h3>Narrative Escape Detection / 逃責話術識別</h3><ul>${(escapes.length?escapes:['No escape mapping data']).map(v=>`<li>${v}</li>`).join('')}</ul></section>`);
+  const sectionI18n = app.lang === 'zh'
+    ? {caseSummary:'案例摘要',scenario:'情境說明',statement:'陳述層',escape:'逃責話術識別',noStmt:'暫無陳述資料',noEscape:'暫無逃責映射資料',roles:'責任映射角色',role:'角色',typical:'典型說法',tier:'責任層級',ladder:'責任階梯資料',unavailable:'資料暫不可用'}
+    : {caseSummary:'Case Summary',scenario:'Scenario',statement:'Statement Layer',escape:'Narrative Escape Detection',noStmt:'No statement data',noEscape:'No escape mapping data',roles:'Legal Exposure Mapping Roles',role:'Role',typical:'Typical Statement',tier:'Tier',ladder:'Ladder',unavailable:'Data unavailable'};
+  setHtml('caseOverviewContent', `<section><h3>${sectionI18n.caseSummary}</h3><p>${safeText(ov.summary)}</p></section><section><h3>${sectionI18n.scenario}</h3><p>${safeText(ov.scenario)}</p></section><section><h3>${sectionI18n.statement}</h3><ul>${(statements.length?statements:[sectionI18n.noStmt]).map(v=>`<li>${v}</li>`).join('')}</ul></section><section><h3>${sectionI18n.escape}</h3><ul>${(escapes.length?escapes:[sectionI18n.noEscape]).map(v=>`<li>${v}</li>`).join('')}</ul></section>`);
 
   const roles=safeArr(e.roles);
-  setHtml('rolesBlock', roles.length?`<h3>Legal Exposure Mapping Roles</h3><div class="table"><table><thead><tr><th>Role</th><th>Typical Statement</th><th>Tier</th></tr></thead><tbody>${roles.map(r=>`<tr><td>${safeText(r[0])}</td><td>${safeText(r[1])}</td><td>${safeText(r[2])}</td></tr>`).join('')}</tbody></table></div>`:'');
+  setHtml('rolesBlock', roles.length?`<h3>${sectionI18n.roles}</h3><div class="table"><table><thead><tr><th>${sectionI18n.role}</th><th>${sectionI18n.typical}</th><th>${sectionI18n.tier}</th></tr></thead><tbody>${roles.map(r=>`<tr><td>${safeText(r[0])}</td><td>${safeText(r[1])}</td><td>${safeText(r[2])}</td></tr>`).join('')}</tbody></table></div>`:'');
 
   setText('fullVerdictTitle', labels.verdict||'Full Verdict / Full Audit');
-  const ladderHtml=safeArr(deep.ladder).map(l=>`<div class="loss-card"><h4>${safeText(l[0])}</h4><p>${safeText(l[1])}</p><p>${safeText(l[2])}</p><p class="mini">${safeText(l[3])}</p></div>`).join('') || '<div class="loss-card"><h4>Ladder</h4><p>Data unavailable.</p></div>';
+  const ladderHtml=safeArr(deep.ladder).map(l=>`<div class="loss-card"><h4>${safeText(l[0])}</h4><p>${safeText(l[1])}</p><p class="mini">${safeText(l[2])}</p></div>`).join('') || `<div class="loss-card"><h4>${sectionI18n.ladder}</h4><p>${sectionI18n.unavailable}</p></div>`;
   const hasDamageCards=safeArr(deep.damageCards).length>0;
   const damages=hasDamageCards
     ? `<div class="loss-grid">${safeArr(deep.damageCards).map(x=>`<div class="loss-card"><h4>${safeText(x[0])}</h4><p>${safeText(x[1])}</p></div>`).join('')}</div><p class="mini">${safeText(deep.damageNote)}</p>`
-    : `<div class="band-grid">${safeArr(deep.bands,[['Low','N/A']]).map(b=>`<div class="loss-card"><h4>${safeText(b[0])} Band</h4><ul>${safeArr(b.slice(1),['N/A']).map(v=>`<li>${v}</li>`).join('')}</ul></div>`).join('')}</div><p class="mini">${safeText(deep.bandNote)}</p>`;
+    : `<div class="band-grid">${safeArr(deep.bands,[['Low','N/A']]).map(b=>`<div class="loss-card"><h4>${safeText(b[0])}${app.lang==='zh'?' 區間':' Band'}</h4><ul>${safeArr(b.slice(1),['N/A']).map(v=>`<li>${v}</li>`).join('')}</ul></div>`).join('')}</div><p class="mini">${safeText(deep.bandNote)}</p>`;
   const whoPaysRows=safeArr(deep.whoPays).length?safeArr(deep.whoPays):[['N/A','N/A','N/A','N/A']];
-  const whoPays=`<div class="table"><table><thead><tr><th>Cost Type / 成本類型</th><th>Immediate Payer / 立即付款者</th><th>Deferred Payer / 延後付款者</th><th>Hidden Carrier / 隱性承擔者</th></tr></thead><tbody>${whoPaysRows.map(r=>`<tr><td>${safeText(r[0])}</td><td>${safeText(r[1])}</td><td>${safeText(r[2])}</td><td>${safeText(r[3])}</td></tr>`).join('')}</tbody></table></div>`;
-  setHtml('verdictDeepSections', `<section><h3>A. Verdict Explanation / 判決解釋</h3><p>${safeText(deep.verdictExp)}</p></section><section><h3>B. Responsibility Ladder / 責任階梯</h3><div class="loss-grid">${ladderHtml}</div></section><section><h3>C. Legal Exposure Mapping / 法律責任映射</h3><ul>${(safeArr(deep.legalExposure).length?safeArr(deep.legalExposure):['Data unavailable']).map(v=>`<li>${v}</li>`).join('')}</ul></section><section><h3>D. Failure Chain / 失效鏈</h3><p>${safeText(deep.failure)}</p></section><section><h3>E. Damage & Loss Projection / 損失與代價投影</h3>${damages}</section><section><h3>F. Future Consequence / 未來後果</h3><p>${safeText(deep.future)}</p></section><section><h3>G. Who Pays / 誰付錢</h3>${whoPays}</section><section><h3>H. Final Judgment Statement / 最終裁決聲明</h3><p>${safeText(deep.final)}</p></section>`);
+  const whoPays=`<div class="table"><table><thead><tr><th>${app.lang==='zh'?'成本類型':'Cost Type'}</th><th>${app.lang==='zh'?'立即付款者':'Immediate Payer'}</th><th>${app.lang==='zh'?'延後付款者':'Deferred Payer'}</th><th>${app.lang==='zh'?'隱性承擔者':'Hidden Carrier'}</th></tr></thead><tbody>${whoPaysRows.map(r=>`<tr><td>${safeText(r[0])}</td><td>${safeText(r[1])}</td><td>${safeText(r[2])}</td><td>${safeText(r[3])}</td></tr>`).join('')}</tbody></table></div>`;
+  const deepTitles = app.lang === 'zh'
+    ? ['A. 判決解釋','B. 責任階梯','C. 法律責任映射','D. 失效鏈','E. 損失與代價投影','F. 未來後果','G. 誰付錢','H. 最終裁決聲明']
+    : ['A. Verdict Explanation','B. Responsibility Ladder','C. Legal Exposure Mapping','D. Failure Chain','E. Damage & Loss Projection','F. Future Consequence','G. Who Pays','H. Final Judgment Statement'];
+  setHtml('verdictDeepSections', `<section><h3>${deepTitles[0]}</h3><p>${safeText(deep.verdictExp)}</p></section><section><h3>${deepTitles[1]}</h3><div class="loss-grid">${ladderHtml}</div></section><section><h3>${deepTitles[2]}</h3><ul>${(safeArr(deep.legalExposure).length?safeArr(deep.legalExposure):[sectionI18n.unavailable]).map(v=>`<li>${v}</li>`).join('')}</ul></section><section><h3>${deepTitles[3]}</h3><p>${safeText(deep.failure)}</p></section><section><h3>${deepTitles[4]}</h3>${damages}</section><section><h3>${deepTitles[5]}</h3><p>${safeText(deep.future)}</p></section><section><h3>${deepTitles[6]}</h3>${whoPays}</section><section><h3>${deepTitles[7]}</h3><p>${safeText(deep.final)}</p></section>`);
 
   const speech=safeArr(t.speech,['Read Summary','Read Full Verdict','Stop']);
   setText('speakSummary',speech[0]); setText('speakFull',speech[1]); setText('stopSpeak',speech[2]);
@@ -208,7 +217,7 @@ function render(){
   setText('closingLine',t.closing||'Not all efficiency is progress.');
   setText('descriptionModalTitle',t.descTitle||'Description Layer Notice');
   list('descriptionModalList',t.descList||[]); setText('mapTitle',t.mapTitle||'How framework maps responsibility'); list('mapList',t.mapList||[]); setText('descriptionSelf',t.descSelf||'Description-layer engine.');
-  setText('modelModalTitle',app.lang==='zh'?'Model Verdict Explanation / 模型裁決解釋':'Model Verdict Explanation');
+  setText('modelModalTitle',app.lang==='zh'?'模型裁決解釋':'Model Verdict Explanation');
   setHtml('modelModalSections', safeArr(safeObj(e.modal)[app.lang]).map(s=>`<section><h4>${safeText(s[0])}</h4><p>${safeText(s[1])}</p></section>`).join('') || '<section><h4>Model Verdict Explanation</h4><p>Data unavailable.</p></section>');
 
   const req=safeObj(e.apiReq), res=safeObj(e.apiRes);
