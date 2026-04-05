@@ -1,34 +1,40 @@
 # 語意防火牆雙引擎演示
 # Semantic Firewall Dual Engine Demo
 
-## 這是什麼 / What This Is
-- 雙引擎、雙案例、單頁切換式純靜態 demo
-- 展示法律責任判決輸出樣式
-- 展示責任敘事成本審計輸出樣式
-- 展示可回放責任結構與 API 輸出示意
+## 專案定位 / Project Positioning
+這是 GitHub Pages `main/(root)` 可直接部署的純靜態雙引擎 demo，不需 npm、build、bundler 或框架。
 
-## 這不是什麼 / What This Is Not
-- 不是聊天機器人
-- 不是自由輸入工具
-- 不是法律意見替代
-- 不是完整商業 API
-- 不是公開核心演算法頁面
-
-## 雙引擎說明 / Dual Engine
+## 雙引擎說明 / Dual-Engine Overview
 - 引擎 A：法律責任判決引擎（Legal Responsibility Verdict Engine）
 - 引擎 B：責任敘事成本審計引擎（Responsibility Narrative Cost Audit Engine）
-- 同一頁內切換，Hero、案例、公式、裁決、API 會同步更新
+- 單頁切換，Hero、案例、公式、完整判決、API preview、modal 內容同步更新
 
-## GitHub Pages main/(root) 使用方式
-1. 將以下檔案放在 repo 根目錄：`index.html`, `styles.css`, `script.js`, `README.md`, `.nojekyll`
-2. GitHub Pages 設定：
-   - Source: Deploy from a branch
-   - Branch: `main`
-   - Folder: `/(root)`
-3. 不需要 npm、build、bundler 或任何框架
+## 案例概述 / Case Scope
+### Engine A
+15 歲青少年 × 陪伴模型高風險自殺案件責任拆解。重點在於：依附結構與危機輸出是否穿透描述層，並映射到可審計責任鏈。
 
-## Description Layer Notice
-本 demo 中模型只位於描述層，不取代法院、監管、法律意見、司法程序或投資判斷；責任承擔必須回到具名主體與現實制度。本 demo 僅展示輸出樣式與結構，完整核心演算法未公開。
+### Engine B
+NVIDIA 降成本敘事與責任成本審計。重點在於：公開可見節省敘事是否同時納入隱藏成本、延後成本與後果承接。
+
+## 這不是聊天工具 / Why This Is Not a Chat Tool
+- 沒有自由輸入流程
+- 沒有對話式代理邏輯
+- 目標是責任結構輸出與可回放審計展示，不是聊天交互
+
+## 這不是公開完整商業 API / Why This Is Not a Full Public API
+- API 區僅示意輸出格式
+- 核心引擎與完整商業版接口未公開
+- 判決框架與優化規則僅展示結果樣式，不提供核心算法細節
+
+## GitHub Pages 部署方式 / Deployment
+1. 確保根目錄只有網站檔案：`index.html`, `styles.css`, `script.js`, `README.md`, `.nojekyll`
+2. Repository → Settings → Pages
+3. Source: Deploy from a branch
+4. Branch: `main`
+5. Folder: `/(root)`
+
+## Description Layer Notice（簡述）
+本 demo 中模型僅位於描述層，不取代法院、監管、法律意見、司法程序或投資判斷；但輸出不是零後果文字。框架會把責任映射回具名主體，並審計部署權、收益權、敘事權與後果承接之閉環狀態。
 
 ## Official Website
 https://hijo790401.github.io/shen-yao-portal/

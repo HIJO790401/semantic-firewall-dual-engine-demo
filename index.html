@@ -9,17 +9,17 @@
 <body>
   <header class="top-nav">
     <div class="brand">
-      <strong id="projectTitleZh">語意防火牆雙引擎演示</strong>
-      <span id="projectTitleEn">Semantic Firewall Dual Engine Demo</span>
+      <strong>語意防火牆雙引擎演示</strong>
+      <span>Semantic Firewall Dual Engine Demo</span>
     </div>
     <div class="nav-actions">
       <button id="langToggle" class="btn btn-outline">EN</button>
-      <a class="btn btn-primary" href="https://hijo790401.github.io/shen-yao-portal/" target="_blank" rel="noopener" id="officialBtnTop">回到官網</a>
+      <a class="btn btn-primary" id="officialBtnTop" href="https://hijo790401.github.io/shen-yao-portal/" target="_blank" rel="noopener">回到官網</a>
     </div>
   </header>
 
   <main>
-    <section class="hero panel" id="hero">
+    <section class="hero panel">
       <div>
         <h1 id="heroTitle"></h1>
         <p id="heroSubtitle"></p>
@@ -30,26 +30,23 @@
           <button class="btn btn-outline" id="openModelModal"></button>
         </div>
       </div>
-      <div class="risk-card">
-        <div class="label" id="riskLabel"></div>
-        <div class="risk" id="riskValue"></div>
-        <p id="heroOneLine"></p>
-      </div>
+      <aside class="status-card">
+        <h3 id="statusTitle"></h3>
+        <p><strong id="statusEngineLabel"></strong><span id="statusEngine"></span></p>
+        <p><strong id="statusRiskLabel"></strong><span id="statusRisk"></span></p>
+        <p><strong id="statusBoundaryLabel"></strong><span id="statusBoundary"></span></p>
+        <p><strong id="statusClosureLabel"></strong><span id="statusClosure"></span></p>
+        <div class="intensity"><span id="intensityLabel"></span><b id="intensityValue"></b></div>
+      </aside>
     </section>
 
-    <section class="panel two-col" id="whatSection">
-      <div>
-        <h2 id="whatIsTitle"></h2>
-        <ul id="whatIsList"></ul>
-      </div>
-      <div>
-        <h2 id="whatNotTitle"></h2>
-        <ul id="whatNotList"></ul>
-      </div>
+    <section class="panel two-col">
+      <div><h2 id="whatIsTitle"></h2><ul id="whatIsList"></ul></div>
+      <div><h2 id="whatNotTitle"></h2><ul id="whatNotList"></ul></div>
       <p class="notice" id="fixedNotice"></p>
     </section>
 
-    <section class="panel" id="engineSwitcher">
+    <section class="panel">
       <h2 id="engineSwitcherTitle"></h2>
       <div class="engine-tabs">
         <button id="engineA" class="engine-tab active"></button>
@@ -57,15 +54,8 @@
       </div>
     </section>
 
-    <section class="panel" id="coreStructure">
-      <h2 id="coreStructureTitle"></h2>
-      <div class="cards" id="coreCards"></div>
-    </section>
-
-    <section class="panel" id="basicFormula">
-      <h2 id="basicFormulaTitle"></h2>
-      <div id="formulaList" class="stack"></div>
-    </section>
+    <section class="panel" id="coreStructure"><h2 id="coreStructureTitle"></h2><div class="cards" id="coreCards"></div></section>
+    <section class="panel" id="basicFormula"><h2 id="basicFormulaTitle"></h2><div id="formulaList" class="stack"></div></section>
 
     <section class="panel" id="caseOverview">
       <h2 id="caseOverviewTitle"></h2>
@@ -75,36 +65,27 @@
 
     <section class="panel" id="fullVerdict">
       <h2 id="fullVerdictTitle"></h2>
-      <div class="stack" id="verdictContent"></div>
+      <div id="verdictDeepSections" class="stack"></div>
       <div class="speech-actions">
         <button class="btn btn-primary" id="speakSummary"></button>
         <button class="btn btn-outline" id="speakFull"></button>
         <button class="btn btn-danger" id="stopSpeak"></button>
       </div>
-      <p id="speechStatus" class="small"></p>
+      <p class="small" id="speechStatus"></p>
     </section>
 
     <section class="panel" id="apiPreview">
       <h2 id="apiTitle"></h2>
       <div class="api-grid">
-        <div>
-          <h3>Request</h3>
-          <pre id="apiRequest"></pre>
-        </div>
-        <div>
-          <h3>Response</h3>
-          <pre id="apiResponse"></pre>
-        </div>
+        <div><h3>Request</h3><pre id="apiRequest"></pre></div>
+        <div><h3>Response</h3><pre id="apiResponse"></pre></div>
       </div>
       <p class="small" id="apiFootnote"></p>
     </section>
   </main>
 
   <footer class="panel footer">
-    <p>Wen-Yao Hsu / Shen-Yao 888π</p>
-    <p>Founder of Semantic Firewall</p>
-    <p>Taichung, Taiwan</p>
-    <p>Email: ken0963521@gmail.com</p>
+    <p>Wen-Yao Hsu / Shen-Yao 888π</p><p>Founder of Semantic Firewall</p><p>Taichung, Taiwan</p><p>Email: ken0963521@gmail.com</p>
     <a class="btn btn-primary" href="https://hijo790401.github.io/shen-yao-portal/" target="_blank" rel="noopener">Official Website</a>
     <p id="closingLine"></p>
   </footer>
@@ -114,6 +95,8 @@
       <button class="close" data-close="descriptionModal">×</button>
       <h3 id="descriptionModalTitle"></h3>
       <ul id="descriptionModalList"></ul>
+      <h4 id="mapTitle"></h4>
+      <ul id="mapList"></ul>
       <pre id="descriptionSelf"></pre>
     </div>
   </div>
@@ -122,7 +105,7 @@
     <div class="modal-content">
       <button class="close" data-close="modelModal">×</button>
       <h3 id="modelModalTitle"></h3>
-      <ul id="modelModalList"></ul>
+      <div id="modelModalSections" class="stack"></div>
     </div>
   </div>
 
